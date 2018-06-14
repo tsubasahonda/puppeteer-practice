@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
+require('dotenv').config();
 
-class RstoreScrapper {
+class singleScrapper {
   constructor(args) {
     this.roomID = args.roomID;
   }
@@ -10,7 +11,7 @@ class RstoreScrapper {
     const page = await browser.newPage();
 
     try {
-      await page.goto('https://www.r-store.jp/chintai/room/' + `${this.roomID}`);
+      await page.goto(process.env.URL + `${this.roomID}`);
 
       let singleInfo = await page.evaluate(() => {
         let singleInfomationsElement = document.querySelectorAll('.sidebar-single > .info > ul > li');
@@ -39,7 +40,7 @@ class RstoreScrapper {
   }
 }
 
-const singleInfo = new RstoreScrapper({
+const singleInfo = new singleScrapper({
   roomID: '140806'
 });
 
