@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "coinboard-scrapper": "^0.1.0"
+  },
+  "devDependencies": {
+    "mysql": "^2.15.0"
   }
 }
